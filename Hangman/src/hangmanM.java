@@ -611,6 +611,11 @@ public class hangmanM
 			}
 		}
 	}
+	
+	public void getWordBank(File textFile)
+	{
+		//use an array list to do this part and read the lines of the word bank for different words.
+	}
 }
 			
 		
