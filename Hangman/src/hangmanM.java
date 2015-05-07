@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -59,6 +60,8 @@ public class hangmanM
     ImageIcon hangEnd;
     ImageIcon icon;
 
+    String[] compGuessing = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
+    						"Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     String again = "Would you like to play again?\n";
     String guessLower;
     String guessUpper;
@@ -81,10 +84,11 @@ public class hangmanM
     public void reset() //resets the game if the player wants to play twice
     {
         lettersLeft = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
-        guess ="placceholder";
+        guess ="placeholder";
         numOfCorrect = 0;
         hangCounter = 0;
         word = "placeholder";
+        hideWord = "_____";
         whatImg();
     }
     
@@ -249,7 +253,7 @@ public class hangmanM
     	whatImg();
     	
         Object[] options = {"Guess letter", "Guess word", "Quit"};
-        int k = JOptionPane.showOptionDialog(null, "Please make a guess \n Number of Correct: " + numOfCorrect + "\n Number of incorrect guesses: " + hangCounter + "\n Word: " + hideWord + "\n Letters Left \n" + lettersLeft, "Hangman",
+        int k = JOptionPane.showOptionDialog(null, "Please make a guess \n Number of correct guesses: " + numOfCorrect + "\n Number of incorrect guesses: " + hangCounter + "\n Word: " + hideWord + "\n Letters Left \n" + lettersLeft, "Hangman",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, whatImg(), options, options[1]);
         if (k == JOptionPane.YES_OPTION)
         {
@@ -470,7 +474,7 @@ public class hangmanM
     {
     	Object options[] = {"Play game", "Display word bank"};
     	int startMessage = JOptionPane.showOptionDialog(null,"Welcome to hangman! \n Written by Patrick Fischer \n 5 wrong guesses and you will lose the game", "Hangman",
-    			JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, whatImg(), options, options[1]);
+    			JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, whatImg(), options, options[1]);
     	if (startMessage == JOptionPane.NO_OPTION) //Display word bank
     	{
     		startMessagePartTwo();
@@ -479,8 +483,9 @@ public class hangmanM
 		{
 			System.exit(0);
 		}
-    	else //Hit the play game button
+    	else
     	{
+    		//continue on to play game
     	}
     }
     
@@ -488,7 +493,7 @@ public class hangmanM
     {
 
 		Object patrick[] = {"Play game", "Add to word bank"};
-		int seeWordBank = JOptionPane.showOptionDialog(null, wordBankUpdater, "Hangman", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, whatImg(), patrick, patrick[1]);
+		int seeWordBank = JOptionPane.showOptionDialog(null, wordBankUpdater, "Hangman", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, patrick, patrick[1]);
 		if (seeWordBank == JOptionPane.NO_OPTION)
 		{
 			addToWordBank();
@@ -610,13 +615,5 @@ public class hangmanM
 				ex.printStackTrace();
 			}
 		}
-	}
-	
-	public void getWordBank(File textFile)
-	{
-		//use an array list to do this part and read the lines of the word bank for different words.
-	}
+	}	
 }
-			
-		
-    
