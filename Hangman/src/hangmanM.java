@@ -212,35 +212,31 @@ public class hangmanM
     
     public ImageIcon whatImg() //this bit is also quite horrible
     {
-    	if (hangCounter == 0)
-    	{
-    		icon = hangStart;
-    	}
-    	else if (hangCounter == 1)
-    	{
-    		icon = hangOne;
-    	}
-    	else if (hangCounter == 2)
-    	{
-    		icon = hangTwo;
-    	}
-    	else if (hangCounter == 3)
-    	{
-    		icon = hangThree;
-    	}
-    	else if (hangCounter == 4)
-    	{
-    		icon = hangFour;
-    	}
-    	else if (hangCounter == 5)
-    	{
-    		icon = hangEnd;
-    	}
-    	else
-    	{
-    		JOptionPane.showMessageDialog(null, "Something went wrong");
-    		System.exit(0);
-    	}
+    switch(hangCounter)
+{
+case 0:
+	icon = hangStasrt;
+	break;
+case 1:
+	icon = hangOne;
+	break;
+case 2:
+    icon = hangTwo;
+	break;
+case 3:
+     icon = hangThree;
+     break;
+case 4:
+      icon = hangFour;
+      break;
+case 5:
+     icon = hangEnd;
+       break;
+default:
+      JOptionPane.showMessageDialog(null, "Somenthing went Wrong");
+      System.exit(0);
+       break;	   	
+}
     	return icon;
     }
 
