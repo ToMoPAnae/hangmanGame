@@ -247,7 +247,6 @@ public class hangmanM
     public void wordOrLetter() //ask if user wants to guess word or letter
     { 
     	whatImg();
-    	
         Object[] options = {"Guess letter", "Guess word", "Quit"};
         int k = JOptionPane.showOptionDialog(null, "Please make a guess \n Number of Correct: " + numOfCorrect + "\n Number of incorrect guesses: " + hangCounter + "\n Word: " + hideWord + "\n Letters Left \n" + lettersLeft, "Hangman",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, whatImg(), options, options[1]);
@@ -275,9 +274,10 @@ public class hangmanM
         Object[] options = {null};
         guess = (String)JOptionPane.showInputDialog(null, "Please make a guess", "Hangman",
             JOptionPane.INFORMATION_MESSAGE, whatImg(), null, options[0]);
-        if (guess == null)
+        while (guess == null)
         {
         	wordOrLetter();
+        	askGuess();
         }
         guessUpper = guess.toUpperCase();
         guessLower = guess.toLowerCase();
